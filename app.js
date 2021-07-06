@@ -1,34 +1,50 @@
+let clickcount = 0
 let cheese = 0
+let totalAutoUpgrades = 0
 
 let clickUpgrades = {
-  buy1: {
+  toothpick: {
     price: 1,
     multiplier: 1,
-    quantity: 0
+    quantity: 0,
+    max: 10
   },
-  buy2: {
+  cheeseSlicer: {
     price: 2,
     multiplier: 5,
-    quantity: 0
+    quantity: 0,
+    max: 8
   },
-  buy3: {
+  cheeseKnife: {
     price: 3,
     multiplier: 2,
-    quantity: 0
+    quantity: 0,
+    max: 5
   }
 }
 
 let automaticUpgrades = {
-  buy50: {
+  cheeseCave: {
     price: 50,
-    multiplier: 50,
+    multiplier: 2,
+    quantity: 0,
+    max: 2
+  },
+  buy1000: {
+    price: 1000,
+    multiplier: 1,
     quantity: 0
   }
 }
 
 function mine() {
-  if (clickUpgrades.buy3.quantity > 0) {
-    cheese += clickUpgrades.buy3.quantity * 2
+  clickcount += 1
+  if (clickUpgrades.cheeseKnife.quantity > 0) {
+    cheese += clickUpgrades.cheeseKnife.quantity + 1
+    //   if (clickUpgrades.cheeseKnife.quantity == 1) {
+    //     cheese += 2
+    //   }
+    //   else { cheese += 1 * clickUpgrades.cheeseKnife.quantity }
   }
   else { cheese += 1 }
   update()
@@ -36,42 +52,68 @@ function mine() {
 
 function update() {
   document.getElementById("displayCheese").innerText = cheese.toString()
-  document.getElementById("displayBuy1").innerText = clickUpgrades.buy1.quantity.toString()
-  document.getElementById("displayBuy2").innerText = clickUpgrades.buy2.quantity.toString()
-  document.getElementById("displayBuy3").innerText = clickUpgrades.buy3.quantity.toString()
+  document.getElementById("displaytoothpick").innerText = clickUpgrades.toothpick.quantity.toString()
+  document.getElementById("displayCheeseSlicer").innerText = clickUpgrades.cheeseSlicer.quantity.toString()
+  document.getElementById("displayCheeseKnife").innerText = clickUpgrades.cheeseKnife.quantity.toString()
+  document.getElementById("displayCheeseCave").innerText = automaticUpgrades.cheeseCave.quantity.toString()
+  document.getElementById("cheeseKnifeMods").innerText = (clickUpgrades.cheeseKnife.quantity + 1).toString()
+  document.getElementById("autoMods").innerText = totalAutoUpgrades.toString()
+
 }
 
-function buyBuy1() {
-  if (cheese > 0) {
-    clickUpgrades.buy1.quantity += 1
-    cheese -= 1
+function buytoothpick() {
+  if (cheese > clickUpgrades.toothpick.price && clickUpgrades.toothpick.quantity < clickUpgrades.toothpick.max) {
+    clickUpgrades.toothpick.quantity += 1
+    cheese -= clickUpgrades.toothpick.price
+    clickUpgrades.toothpick.price += 1
   }
+  document.getElementById("toothpickbtn").innerText = '-' + clickUpgrades.toothpick.price + ' Buy Toothpick'
   update()
 }
 
-function buyBuy2() {
-  if (cheese > 1) {
-    clickUpgrades.buy2.quantity += 1
-    cheese -= 2
+function buyCheeseSlicer() {
+  if (cheese > clickUpgrades.cheeseSlicer.price && clickUpgrades.cheeseSlicer.quantity < clickUpgrades.cheeseSlicer.max) {
+    clickUpgrades.cheeseSlicer.quantity += 1
+    cheese -= clickUpgrades.cheeseSlicer.price
+    clickUpgrades.cheeseSlicer.price += 2
   }
+  document.getElementById("cheeseSlicerbtn").innerText = '-' + clickUpgrades.cheeseSlicer.price + ' Buy Cheese Slicer'
   update()
 }
 
-function buyBuy3() {
-  if (cheese > 2) {
-    clickUpgrades.buy3.quantity += 1
-    cheese -= 3
+function buyCheeseKnife() {
+  if (cheese > clickUpgrades.cheeseKnife.price && clickUpgrades.cheeseKnife.quantity < clickUpgrades.cheeseKnife.max) {
+    clickUpgrades.cheeseKnife.quantity += 1
+    cheese -= clickUpgrades.cheeseKnife.price
+    clickUpgrades.cheeseKnife.price += 3
   }
+  document.getElementById("cheeseKnifebtn").innerText = '-' + clickUpgrades.cheeseKnife.price + ' Buy Cheese Knife'
   update()
 }
 
-function buyBuy5() {
-  if (cheese > 49) {
-    // let purchased = clickUpgrades.buy1.quantity
-    clickUpgrades.buy2.quantity += 1
-    cheese -= 5
+function buyCheeseCave() {
+  if (cheese > automaticUpgrades.cheeseCave.price && automaticUpgrades.cheeseCave.quantity < automaticUpgrades.cheeseCave.max) {
+    automaticUpgrades.cheeseCave.quantity += 1
+    cheese -= automaticUpgrades.cheeseCave.price
+    automaticUpgrades.cheeseCave.price += 50
+    if (automaticUpgrades.cheeseCave.quantity == 1) {
+      startInterval()
+    }
   }
+  document.getElementById("cheeseCavebtn").innerText = '-' + automaticUpgrades.cheeseCave.price + ' Buy Key to Cheese Cave'
   update()
 }
 
+function collectAutoUpgrades() {
+  for (let key in automaticUpgrades)
+    if (automaticUpgrades[key].quantity > 0) {
+      totalAutoUpgrades = automaticUpgrades[key].quantity * automaticUpgrades[key].multiplier
+    }
+  cheese += totalAutoUpgrades
+  console.log(totalAutoUpgrades)
+  update()
+}
 
+function startInterval() {
+  collectionInterval = setInterval(collectAutoUpgrades, 3000);
+}

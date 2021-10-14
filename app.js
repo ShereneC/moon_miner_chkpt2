@@ -110,10 +110,10 @@ function collectAutoUpgrades() {
       totalAutoUpgrades = automaticUpgrades[key].quantity * automaticUpgrades[key].multiplier
     }
   cheese += totalAutoUpgrades
-  console.log(totalAutoUpgrades)
+  // console.log(totalAutoUpgrades)
   update()
 }
 
 function startInterval() {
-  collectionInterval = setInterval(collectAutoUpgrades, 3000);
+  setInterval(collectAutoUpgrades, 3000);
 }

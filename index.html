@@ -25,33 +25,33 @@
       </div>
     </div>
   </header>
-  <main>
-    <div class="row text-center container-fluid">
+  <main class="container-fluid">
+    <div class="row text-center">
       <div class="col text-center">
         <h4>Click on the moon to <span><h1>Mine that Cheese!</h1></span></h4>
       </div>
     </div>
-    <div class="row">
+    <div class="row no-gutters">
       <div class="col-md-6 pb-1 text-center">
-        <img class="w-75" src="assets/moon_small.png" onclick="mine()" alt="Moon Image">
+        <img class="w-100" src="assets/moon_small.png" onclick="mine()" alt="Moon Image">
       </div>
       <div class="col-md-6 d-flex flex-column">
         <h4 class="text-center">Mine Stats</h4>
         <h3 class=" align-self-center pb-0 d-flex"><i class="mdi mdi-cheese"></i>
         </h3>
         <div class="align-self-center pb-0 d-flex flex-column">
-          <h1>Cheese Slices Mined: <span id="displayCheese">0</span></h1>
-          <h6>Now mining <span id="cheeseKnifeMods">1</span><span> cheeses per click!</span></h6>
-          <h6>Auto earning <span id="autoMods">0</span><span> cheeses every 3 seconds!!</span></h6>
-          <hr>
-          <h4>Toothpicks: <span id="displaytoothpick">0</span></h4>
-          <h4>Cheese Slicers: <span id="displayCheeseSlicer">0</span></h4>
-          <h4>Cheese Knives: <span id="displayCheeseKnife">0</span></h4>
-          <h4>Keys to the Cheese Cave: <span id="displayCheeseCave">0</span></h4>
+          <h1 >Cheese Slices Mined: <span id="displayCheese">0</span></h1>
+          <h6 >Now mining <span id="cheeseKnifeMods">1</span><span> cheeses per click!</span></h6>
+          <h6 >Auto earning <span id="autoMods">0</span><span> cheeses every 3 seconds!!</span></h6>
+          <hr >
+          <h4 >Toothpicks: <span id="displaytoothpick">0</span></h4>
+          <h4 >Cheese Slicers: <span id="displayCheeseSlicer">0</span></h4>
+          <h4 >Cheese Knives: <span id="displayCheeseKnife">0</span></h4>
+          <h4 >Keys to the Cheese Cave: <span id="displayCheeseCave">0</span></h4>
         </div>
       </div>
     </div>
-    <div class="row mt-4 pb-2">
+    <div class="row p-2 mt-4">
       <div class="col-md-12 d-flex justify-content-between">
         <button type="button" id="toothpickbtn" class="btn btn-outline-primary mx-2" onclick="buytoothpick()">-1 Buy
           Toothpick</button>
@@ -60,14 +60,6 @@
           <button type="button" id="cheeseKnifebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseKnife()">-3 Buy
           Cheese Knife</button>
           <button type="button" id="cheeseCavebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseCave()">-50 Buy Key to Cheese Cave</button>
-      </div>
-      <div class="col-md-3 col-sm-12">
-      </div>
-      <div class="col-md-3 col-sm-12">
-
-      </div>
-      <div class="col-md-3 col-sm-12">
-
       </div>
     </div>
   </main>

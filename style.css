@@ -6,7 +6,12 @@ body {
 }
 
 main {
-  flex-grow: .9;
+  flex-grow: 1;
+}
+
+img {
+  width: 100%;
+  max-width: 400px;
 }
 
 #scroll-container {

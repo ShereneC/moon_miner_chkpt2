@@ -36,34 +36,38 @@
         <img class="w-75" src="assets/moon_small.png" onclick="mine()" alt="Moon Image">
       </div>
       <div class="col-md-6 p-4 d-flex flex-column">
-        <h4 class="text-center">Stats</h4>
+        <h4 class="text-center">Mine Stats</h4>
         <h3 class=" align-self-center pb-0 d-flex"><i class="mdi mdi-cheese"></i>
-          <h1>Cheese Slices Mined: <span id="displayCheese">0</span></h1>
-          <h4>Toothpick: <span id="displaytoothpick">0</span></h4>
-          <h4>Cheese Slicer: <span id="displayCheeseSlicer">0</span></h4>
-          <h4>Cheese Knife: <span id="displayCheeseKnife">0</span></h4>
-          <h4>Key to the Cheese Cave: <span id="displayCheeseCave">0</span></h4>
         </h3>
+        <div class="align-self-center pb-0 d-flex flex-column">
+          <h1>Cheese Slices Mined: <span id="displayCheese">0</span></h1>
+          <h6>Now mining <span id="cheeseKnifeMods">1</span><span> cheeses per click!</span></h6>
+          <h6>Auto earning <span id="autoMods">0</span><span> cheeses every 3 seconds!!</span></h6>
+          <hr>
+          <h4>Toothpicks: <span id="displaytoothpick">0</span></h4>
+          <h4>Cheese Slicers: <span id="displayCheeseSlicer">0</span></h4>
+          <h4>Cheese Knives: <span id="displayCheeseKnife">0</span></h4>
+          <h4>Keys to the Cheese Cave: <span id="displayCheeseCave">0</span></h4>
+        </div>
       </div>
     </div>
-    <div class="row flex-row justify-content-around mt-4">
-      <div class="col">
-        <button type="button" id="toothpickbtn" class="btn btn-outline-primary" onclick="buytoothpick()">-1 Buy
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex justify-content-between">
+        <button type="button" id="toothpickbtn" class="btn btn-outline-primary mx-2" onclick="buytoothpick()">-1 Buy
           Toothpick</button>
-      </div>
-      <div class="col">
-        <button type="button" id="cheeseSlicerbtn" class="btn btn-outline-primary" onclick="buyCheeseSlicer()">-2 Buy
+          <button type="button" id="cheeseSlicerbtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseSlicer()">-2 Buy
           Cheese Slicer</button>
-      </div>
-      <div class="col">
-        <button type="button" id="cheeseKnifebtn" class="btn btn-outline-primary" onclick="buyCheeseKnife()">-3 Buy
+          <button type="button" id="cheeseKnifebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseKnife()">-3 Buy
           Cheese Knife</button>
-        <h6>Now mining <span id="cheeseKnifeMods">1</span><span> cheeses per click!</span></h6>
+          <button type="button" id="cheeseCavebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseCave()">-50 Buy Key to Cheese Cave</button>
       </div>
-      <div class="col">
-        <button type="button" id="cheeseCavebtn" class="btn btn-outline-primary" onclick="buyCheeseCave()">-50 Buy Key
-          to Cheese Cave</button>
-        <h6>Auto earning <span id="autoMods">0</span><span> cheeses every 3 seconds!!</span></h6>
+      <div class="col-md-3 col-sm-12">
+      </div>
+      <div class="col-md-3 col-sm-12">
+
+      </div>
+      <div class="col-md-3 col-sm-12">
+
       </div>
     </div>
   </main>

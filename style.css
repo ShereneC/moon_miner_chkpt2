@@ -9,11 +9,11 @@ main {
   flex-grow: .9;
 }
 
-/* #scroll-container {
-  border: 3px solid black;
-  border-radius: 5px;
+#scroll-container {
+  /* border: 3px solid black;
+  border-radius: 5px; */
   overflow: hidden;
-} */
+}
 
 #scroll-text {
   text-align: right;

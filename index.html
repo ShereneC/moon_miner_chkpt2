@@ -31,7 +31,7 @@
         <h4>Click on the moon to <span><h1>Mine that Cheese!</h1></span></h4>
       </div>
     </div>
-    <div class="row no-gutters">
+    <div class="row">
       <div class="col-md-6 pb-1 text-center">
         <img class="w-100" src="assets/moon_small.png" onclick="mine()" alt="Moon Image">
       </div>
@@ -52,14 +52,20 @@
       </div>
     </div>
     <div class="row p-2 mt-4">
-      <div class="col-md-12 d-flex justify-content-between">
-        <button type="button" id="toothpickbtn" class="btn btn-outline-primary mx-2" onclick="buytoothpick()">-1 Buy
-          Toothpick</button>
-          <button type="button" id="cheeseSlicerbtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseSlicer()">-2 Buy
-          Cheese Slicer</button>
-          <button type="button" id="cheeseKnifebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseKnife()">-3 Buy
-          Cheese Knife</button>
-          <button type="button" id="cheeseCavebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseCave()">-50 Buy Key to Cheese Cave</button>
+      <div class="col">
+        <div class="row">
+          <div class="col-md-6 d-flex justify-content-around pb-2">
+            <button type="button" id="toothpickbtn" class="btn btn-outline-primary mx-2" onclick="buytoothpick()">-1 Buy
+              Toothpick</button>
+              <button type="button" id="cheeseSlicerbtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseSlicer()">-2 Buy
+              Cheese Slicer</button>
+          </div>
+          <div class="col-md-6 d-flex justify-content-around pb-2">
+            <button type="button" id="cheeseKnifebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseKnife()">-3 Buy
+            Cheese Knife</button>
+            <button type="button" id="cheeseCavebtn" class="btn btn-outline-primary mx-2" onclick="buyCheeseCave()">-50 Buy Key to Cheese Cave</button>
+        </div>
+        </div>  
       </div>
     </div>
   </main>

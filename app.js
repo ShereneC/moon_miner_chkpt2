@@ -11,15 +11,15 @@ let clickUpgrades = {
   },
   cheeseSlicer: {
     price: 2,
-    multiplier: 5,
-    quantity: 0,
-    max: 8
-  },
-  cheeseKnife: {
-    price: 3,
     multiplier: 2,
     quantity: 0,
     max: 5
+  },
+  cheeseKnife: {
+    price: 3,
+    multiplier: 3,
+    quantity: 0,
+    max: 4
   }
 }
 
@@ -62,23 +62,30 @@ function update() {
 }
 
 function buytoothpick() {
-  if (cheese > clickUpgrades.toothpick.price && clickUpgrades.toothpick.quantity < clickUpgrades.toothpick.max) {
-    clickUpgrades.toothpick.quantity += 1
-    cheese -= clickUpgrades.toothpick.price
-    clickUpgrades.toothpick.price += 1
+  let pick = clickUpgrades.toothpick
+  if (cheese > pick.price && pick.quantity < pick.max) {
+    pick.quantity += 1
+    cheese -= pick.price
+    pick.price += 1
   }
   document.getElementById("toothpickbtn").innerText = '-' + clickUpgrades.toothpick.price + ' Buy Toothpick'
   update()
 }
 
 function buyCheeseSlicer() {
-  if (cheese > clickUpgrades.cheeseSlicer.price && clickUpgrades.cheeseSlicer.quantity < clickUpgrades.cheeseSlicer.max) {
-    clickUpgrades.cheeseSlicer.quantity += 1
-    cheese -= clickUpgrades.cheeseSlicer.price
-    clickUpgrades.cheeseSlicer.price += 2
+  let slicer = clickUpgrades.cheeseSlicer
+  let slicerBtn = document.getElementById("cheeseSlicerbtn")
+  if (cheese >= slicer.price && slicer.quantity <= slicer.max) {
+    slicer.quantity++
+    cheese -= slicer.price
+    slicer.price *= 2
+    slicerBtn.innerText = '-' + slicer.price + ' Buy Cheese Slicer'
+    update()
+  } else if (slicer.quantity >= slicer.max -1) {
+    slicerBtn.innerText = "Cheese Slicer SOLD OUT!"
+  } else {
+    slicerBtn.style.display = "none"
   }
-  document.getElementById("cheeseSlicerbtn").innerText = '-' + clickUpgrades.cheeseSlicer.price + ' Buy Cheese Slicer'
-  update()
 }
 
 function buyCheeseKnife() {
@@ -92,11 +99,12 @@ function buyCheeseKnife() {
 }
 
 function buyCheeseCave() {
-  if (cheese > automaticUpgrades.cheeseCave.price && automaticUpgrades.cheeseCave.quantity < automaticUpgrades.cheeseCave.max) {
-    automaticUpgrades.cheeseCave.quantity += 1
-    cheese -= automaticUpgrades.cheeseCave.price
-    automaticUpgrades.cheeseCave.price += 50
-    if (automaticUpgrades.cheeseCave.quantity == 1) {
+  let cave = automaticUpgrades.cheeseCave
+  if (cheese > cave.price && cave.quantity < cave.max) {
+    cave.quantity += 1
+    cheese -= cave.price
+    cave.price += 50
+    if (cave.quantity == 1) {
       startInterval()
     }
   }

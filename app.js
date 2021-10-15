@@ -39,14 +39,17 @@ let automaticUpgrades = {
 
 function mine() {
   clickcount++
-  if (cheese >= clickUpgrades.cheeseSlicer.price -1) {
+  update()
+  if (cheese >= clickUpgrades.cheeseSlicer.price) {
     document.getElementById("cheeseSlicerbtn").style.display = "block"
+  }
+  if (cheese >= clickUpgrades.cheeseKnife.price) {
+    document.getElementById("cheeseKnifebtn").style.display = "block"
   }
   if (clickUpgrades.cheeseKnife.quantity > 0) {
     cheese += clickUpgrades.cheeseKnife.quantity + 1
   }
   else { cheese++ }
-  update()
 }
 
 function update() {
@@ -91,13 +94,22 @@ function buyCheeseSlicer() {
 }
 
 function buyCheeseKnife() {
-  if (cheese > clickUpgrades.cheeseKnife.price && clickUpgrades.cheeseKnife.quantity < clickUpgrades.cheeseKnife.max) {
-    clickUpgrades.cheeseKnife.quantity += 1
-    cheese -= clickUpgrades.cheeseKnife.price
-    clickUpgrades.cheeseKnife.price += 3
+  let knife = clickUpgrades.cheeseKnife
+  let knifeBtn = document.getElementById("cheeseKnifebtn")
+  if (cheese >= knife.price && knife.quantity < knife.max -1) {
+    knife.quantity++
+    cheese -= knife.price
+    knife.price += 3
+    knifeBtn.innerText = '-' + knife.price + ' Buy Cheese Knife'
+    update()
+  } else if (cheese >= knife.price && knife.quantity == knife.max -1) {
+    knife.quantity++
+    cheese -= knife.price
+    knifeBtn.innerText = "Cheese Knife SOLD OUT!"
+    update()
+  } else {
+    knifeBtn.innerText = "Cheese Knife SOLD OUT!"
   }
-  document.getElementById("cheeseKnifebtn").innerText = '-' + clickUpgrades.cheeseKnife.price + ' Buy Cheese Knife'
-  update()
 }
 
 function buyCheeseCave() {

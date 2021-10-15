@@ -38,15 +38,14 @@ let automaticUpgrades = {
 }
 
 function mine() {
-  clickcount += 1
+  clickcount++
+  if (cheese >= clickUpgrades.cheeseSlicer.price -1) {
+    document.getElementById("cheeseSlicerbtn").style.display = "block"
+  }
   if (clickUpgrades.cheeseKnife.quantity > 0) {
     cheese += clickUpgrades.cheeseKnife.quantity + 1
-    //   if (clickUpgrades.cheeseKnife.quantity == 1) {
-    //     cheese += 2
-    //   }
-    //   else { cheese += 1 * clickUpgrades.cheeseKnife.quantity }
   }
-  else { cheese += 1 }
+  else { cheese++ }
   update()
 }
 

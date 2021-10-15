@@ -74,17 +74,20 @@ function buytoothpick() {
 function buyCheeseSlicer() {
   let slicer = clickUpgrades.cheeseSlicer
   let slicerBtn = document.getElementById("cheeseSlicerbtn")
-  if (cheese >= slicer.price && slicer.quantity <= slicer.max) {
+  if (cheese >= slicer.price && slicer.quantity < slicer.max -1) {
     slicer.quantity++
     cheese -= slicer.price
     slicer.price *= 2
     slicerBtn.innerText = '-' + slicer.price + ' Buy Cheese Slicer'
     update()
-  } else if (slicer.quantity >= slicer.max -1) {
+  } else if (cheese >= slicer.price && slicer.quantity == slicer.max -1) {
+    slicer.quantity++
+    cheese -= slicer.price
     slicerBtn.innerText = "Cheese Slicer SOLD OUT!"
+    update()
   } else {
-    slicerBtn.style.display = "none"
-  }
+    slicerBtn.innerText = "Cheese Slicer SOLD OUT!"
+  } 
 }
 
 function buyCheeseKnife() {

@@ -46,6 +46,9 @@ function mine() {
   if (cheese >= clickUpgrades.cheeseKnife.price) {
     document.getElementById("cheeseKnifebtn").style.display = "block"
   }
+  if (cheese >= clickUpgrades.toothpick.price) {
+    document.getElementById("toothpickbtn").style.display = "block"
+  }
   if (clickUpgrades.cheeseKnife.quantity > 0) {
     cheese += clickUpgrades.cheeseKnife.quantity + 1
   }
@@ -65,13 +68,21 @@ function update() {
 
 function buytoothpick() {
   let pick = clickUpgrades.toothpick
-  if (cheese > pick.price && pick.quantity < pick.max) {
-    pick.quantity += 1
+  let pickBtn = document.getElementById("toothpickbtn")
+  if (cheese >= pick.price && pick.quantity < pick.max -1) {
+    pick.quantity++
     cheese -= pick.price
-    pick.price += 1
-  }
-  document.getElementById("toothpickbtn").innerText = '-' + clickUpgrades.toothpick.price + ' Buy Toothpick'
-  update()
+    pick.price++
+    pickBtn.innerText = '-' + pick.price + ' Buy Toothpick'
+    update()
+  } else if (cheese >= pick.price && pick.quantity == pick.max -1) {
+    pick.quantity++
+    cheese -= pick.price
+    pickBtn.innerText = "Toothpick SOLD OUT!"
+    update()
+  } else {
+    pickBtn.innerText = "Toothpick SOLD OUT!"
+  } 
 }
 
 function buyCheeseSlicer() {

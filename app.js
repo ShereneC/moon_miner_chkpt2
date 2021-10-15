@@ -49,6 +49,9 @@ function mine() {
   if (cheese >= clickUpgrades.toothpick.price) {
     document.getElementById("toothpickbtn").style.display = "block"
   }
+  if (cheese >= automaticUpgrades.cheeseCave.price) {
+    document.getElementById("cheeseCavebtn").style.display = "block"
+  }
   if (clickUpgrades.cheeseKnife.quantity > 0) {
     cheese += clickUpgrades.cheeseKnife.quantity + 1
   }
@@ -125,16 +128,24 @@ function buyCheeseKnife() {
 
 function buyCheeseCave() {
   let cave = automaticUpgrades.cheeseCave
-  if (cheese > cave.price && cave.quantity < cave.max) {
-    cave.quantity += 1
+  let caveBtn = document.getElementById("cheeseCavebtn")
+  if (cheese >= cave.price && cave.quantity < cave.max -1) {
+    cave.quantity++
     cheese -= cave.price
     cave.price += 50
     if (cave.quantity == 1) {
       startInterval()
     }
+    caveBtn.innerText = '-' + cave.price + ' Buy Cave Key'
+    update()
+  } else if (cheese >= cave.price && cave.quantity == cave.max -1) {
+    cave.quantity++
+    cheese -= cave.price
+    caveBtn.innerText = "Cave Keys SOLD OUT!"
+    update()
+  } else {
+    caveBtn.innerText = "Cave Keys SOLD OUT!"
   }
-  document.getElementById("cheeseCavebtn").innerText = '-' + automaticUpgrades.cheeseCave.price + ' Buy Key to Cheese Cave'
-  update()
 }
 
 function collectAutoUpgrades() {
